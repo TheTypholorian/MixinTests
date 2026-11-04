@@ -10,6 +10,8 @@ public class JumpTarget extends TestBox {
         for (int i = 0; i < 10; i++) {
             betterPrint("Loop " + i);
         }
+
+        betterPrint("End");
     }
 
     // it won't let me target print calls for some reason
