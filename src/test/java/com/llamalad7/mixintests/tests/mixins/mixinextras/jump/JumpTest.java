@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@MixinTest(box = JumpTarget.class, minMixinExtras = "0.5.5", mixinExtras = TestOption.ON)
+@MixinTest(box = JumpTarget.class, minMixinExtras = "1.0.0", testBytecode = true, mixinExtras = TestOption.ON)
 public class JumpTest {
     @Mixin(JumpTarget.class)
     static class TestMixin {

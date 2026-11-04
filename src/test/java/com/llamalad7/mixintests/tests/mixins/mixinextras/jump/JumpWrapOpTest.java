@@ -12,7 +12,7 @@ import com.llamalad7.mixintests.tests.targets.JumpTarget;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@MixinTest(box = JumpTarget.class, minMixinExtras = "0.5.5", mixinExtras = TestOption.ON)
+@MixinTest(box = JumpTarget.class, minMixinExtras = "1.0.0", testBytecode = true, mixinExtras = TestOption.ON)
 public class JumpWrapOpTest {
     @Mixin(JumpTarget.class)
     static class TestMixin {
