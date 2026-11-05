@@ -3,9 +3,12 @@ package com.llamalad7.mixintests.tests.mixins.mixinextras.jump;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Jump;
+import com.llamalad7.mixinextras.sugar.JumpStack;
 import com.llamalad7.mixinextras.sugar.Local;
-import com.llamalad7.mixinextras.sugar.jump.JumpInfoComplex;
+import com.llamalad7.mixinextras.sugar.jump.JumpInfo;
 import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
+import com.llamalad7.mixinextras.sugar.ref.jump.IntStackRef;
+import com.llamalad7.mixinextras.sugar.ref.jump.StackRef;
 import com.llamalad7.mixintests.ap.annotations.MixinTest;
 import com.llamalad7.mixintests.ap.annotations.TestOption;
 import com.llamalad7.mixintests.tests.targets.JumpTarget;
@@ -32,10 +35,11 @@ public class JumpWrapOpTest {
                         value = "INVOKE",
                         target = "Lcom/llamalad7/mixintests/tests/targets/JumpTarget;betterPrint(Ljava/lang/Object;)V",
                         ordinal = 1
-                ), shiftBeforeStack = true, localsToModify = @Local(type = int.class)) JumpInfoComplex jump
+                ), shiftBeforeStack = true) JumpInfo jump,
+                @Local(jump = 0) IntStackRef i
         ) {
             jump.jump();
-            jump.setLocal(0, 0);
+            i.set(0);
         }
 
         @WrapOperation(
@@ -70,15 +74,17 @@ public class JumpWrapOpTest {
                         value = "INVOKE",
                         target = "Lcom/llamalad7/mixintests/tests/targets/JumpTarget;betterPrint(Ljava/lang/Object;)V",
                         ordinal = 2
-                )) JumpInfoComplex jump,
-                @Local LocalIntRef i
+                )) JumpInfo jump,
+                @Local LocalIntRef i,
+                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
         ) {
             original.call(instance, o + " (yay!)");
 
             if (i.get() >= 5) {
                 jump.jump();
-                jump.setStack(0, this);
-                jump.setStack(1, "End but better");
+                stack1.set((JumpTarget) (Object) this);
+                stack2.set("End but better");
             } else if (i.get() == 1) {
                 i.set(2);
             }
@@ -100,15 +106,17 @@ public class JumpWrapOpTest {
                         value = "INVOKE",
                         target = "Lcom/llamalad7/mixintests/tests/targets/JumpTarget;betterPrint(Ljava/lang/Object;)V",
                         ordinal = 2
-                )) JumpInfoComplex jump,
-                @Local LocalIntRef i
+                )) JumpInfo jump,
+                @Local LocalIntRef i,
+                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
         ) {
             original.call(instance, o + " (wow!)");
 
             if (i.get() >= 8) {
                 jump.jump();
-                jump.setStack(0, this);
-                jump.setStack(1, "End but better");
+                stack1.set((JumpTarget) (Object) this);
+                stack2.set("End but better");
             }
         }
 
@@ -128,15 +136,17 @@ public class JumpWrapOpTest {
                         value = "INVOKE",
                         target = "Lcom/llamalad7/mixintests/tests/targets/JumpTarget;betterPrint(Ljava/lang/Object;)V",
                         ordinal = 2
-                )) JumpInfoComplex jump,
-                @Local LocalIntRef i
+                )) JumpInfo jump,
+                @Local LocalIntRef i,
+                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
         ) {
             original.call(instance, o + " (fantastic!)");
 
             if (i.get() >= 3) {
                 jump.jump();
-                jump.setStack(0, this);
-                jump.setStack(1, "End but better");
+                stack1.set((JumpTarget) (Object) this);
+                stack2.set("End but better");
             }
         }
     }

@@ -25,7 +25,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
   // access flags 0x1
   public <init>()V
    L0
-    LINENUMBER 5 L0
+    LINENUMBER 7 L0
     ALOAD 0
     INVOKESPECIAL com/llamalad7/mixintests/harness/tests/TestBox.<init> ()V
     RETURN
@@ -37,14 +37,24 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
   // access flags 0x4
   protected box()V
    L0
-    LINENUMBER 8 L0
+    LINENUMBER 10 L0
+    LDC 10.0F
+    FSTORE 1
+   L1
+    LINENUMBER 12 L1
     ALOAD 0
-    LDC "Initial 10"
+    FLOAD 1
+    INVOKEDYNAMIC makeConcatWithConstants(F)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "Initial \u0001"
+    ]
+    ASTORE 4
     ASTORE 3
-    ASTORE 2
     ALOAD 0
-    ALOAD 2
     ALOAD 3
+    ALOAD 4
     INVOKEDYNAMIC call()Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
@@ -54,48 +64,50 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
       com/llamalad7/mixintests/tests/targets/JumpTarget.mixinextras$bridge$betterPrint$8([Ljava/lang/Object;)Ljava/lang/Void;,
       ([Ljava/lang/Object;)Ljava/lang/Void;
     ]
-    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl
+    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl
     DUP
-    LDC 1
-    LDC 0
-    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.<init> (II)V
-    ASTORE 4
-    ALOAD 4
-    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box1 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;)V
-    ALOAD 4
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.willJump ()Z
-    IFEQ L1
-    ALOAD 4
-    LDC 0
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.localInt (I)I
-    ISTORE 1
-    GOTO L2
-   L1
-    LINENUMBER 10 L1
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget T com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl] []
-    ICONST_0
-    ISTORE 1
-   L3
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl] []
-    ILOAD 1
-    BIPUSH 10
-    IF_ICMPGE L4
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.<init> ()V
+    ASTORE 5
+    ALOAD 5
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl.<init> ()V
+    ASTORE 6
+    ALOAD 6
+    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box1 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/jump/IntStackRef;)V
+    ALOAD 5
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.willJump ()Z
+    IFEQ L2
+    ALOAD 6
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl.dispose ()I
+    ISTORE 2
+    GOTO L3
    L2
-    LINENUMBER 11 L2
+    LINENUMBER 14 L2
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F T com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl] []
+    ICONST_0
+    ISTORE 2
+   L4
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl] []
+    ILOAD 2
+    BIPUSH 10
+    IF_ICMPGE L5
+   L3
+    LINENUMBER 15 L3
    FRAME SAME
     ALOAD 0
-    ILOAD 1
+    ILOAD 2
     INVOKEDYNAMIC makeConcatWithConstants(I)Ljava/lang/String; [
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
       // arguments:
       "Loop \u0001"
     ]
+    ASTORE 4
     ASTORE 3
-    ASTORE 2
     ALOAD 0
-    ALOAD 2
     ALOAD 3
+    ALOAD 4
     INVOKEDYNAMIC call()Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
@@ -105,142 +117,181 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
       com/llamalad7/mixintests/tests/targets/JumpTarget.mixinextras$bridge$betterPrint$10([Ljava/lang/Object;)Ljava/lang/Void;,
       ([Ljava/lang/Object;)Ljava/lang/Void;
     ]
-    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl
+    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl
     DUP
-    LDC 0
-    LDC 2
-    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.<init> (II)V
-    ASTORE 5
-    ALOAD 5
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.<init> ()V
+    ASTORE 7
+    ALOAD 7
     NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl
     DUP
     INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl.<init> ()V
-    ASTORE 6
-    ALOAD 6
-    ASTORE 9
     ASTORE 8
-    ASTORE 7
-    ASTORE 3
-    ASTORE 2
-    POP
-    ALOAD 0
-    ALOAD 2
-    ALOAD 3
-    ALOAD 0
-    ALOAD 7
     ALOAD 8
-    ALOAD 9
-    INVOKEDYNAMIC call(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
-      // handle kind 0x6 : INVOKESTATIC
-      java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
-      // arguments:
-      ([Ljava/lang/Object;)Ljava/lang/Object;,
-      // handle kind 0x7 : INVOKESPECIAL
-      com/llamalad7/mixintests/tests/targets/JumpTarget.mixinextras$bridge$wrapOperation$zza000$box2$11(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;[Ljava/lang/Object;)Ljava/lang/Void;,
-      ([Ljava/lang/Object;)Ljava/lang/Void;
-    ]
-    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl
     DUP
-    LDC 0
-    LDC 2
-    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.<init> (II)V
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.<init> ()V
+    ASTORE 9
+    ALOAD 9
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.<init> ()V
     ASTORE 10
     ALOAD 10
-    ALOAD 6
-    ASTORE 9
-    ASTORE 8
-    ASTORE 7
+    ASTORE 15
+    ASTORE 14
+    ASTORE 13
+    ASTORE 12
+    ASTORE 11
+    ASTORE 4
     ASTORE 3
-    ASTORE 2
     POP
     ALOAD 0
-    ALOAD 2
     ALOAD 3
+    ALOAD 4
     ALOAD 0
-    ALOAD 7
-    ALOAD 8
-    ALOAD 9
-    INVOKEDYNAMIC call(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
+    ALOAD 11
+    ALOAD 12
+    ALOAD 13
+    ALOAD 14
+    ALOAD 15
+    INVOKEDYNAMIC call(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
       // arguments:
       ([Ljava/lang/Object;)Ljava/lang/Object;,
       // handle kind 0x7 : INVOKESPECIAL
-      com/llamalad7/mixintests/tests/targets/JumpTarget.mixinextras$bridge$wrapOperation$zza000$box3$12(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;[Ljava/lang/Object;)Ljava/lang/Void;,
+      com/llamalad7/mixintests/tests/targets/JumpTarget.mixinextras$bridge$wrapOperation$zza000$box2$11(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;[Ljava/lang/Object;)Ljava/lang/Void;,
       ([Ljava/lang/Object;)Ljava/lang/Void;
     ]
-    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl
+    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl
     DUP
-    LDC 0
-    LDC 2
-    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.<init> (II)V
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.<init> ()V
+    ASTORE 16
+    ALOAD 16
+    ALOAD 8
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.<init> ()V
+    ASTORE 17
+    ALOAD 17
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.<init> ()V
+    ASTORE 18
+    ALOAD 18
+    ASTORE 15
+    ASTORE 14
+    ASTORE 13
+    ASTORE 12
     ASTORE 11
-    ALOAD 11
-    ALOAD 6
-    ALOAD 6
-    ILOAD 1
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl.init (I)V
-    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box4 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
-    ALOAD 11
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.willJump ()Z
-    IFEQ L5
-    ALOAD 11
-    LDC 0
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.stackObject (I)Ljava/lang/Object;
-    CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
-    ALOAD 11
-    LDC 1
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.stackObject (I)Ljava/lang/Object;
-    CHECKCAST java/lang/String
-    GOTO L6
-   L5
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl com/llamalad7/mixinextras/injector/wrapoperation/Operation com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl] []
-    ALOAD 10
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.willJump ()Z
-    IFEQ L7
-    ALOAD 10
-    LDC 0
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.stackObject (I)Ljava/lang/Object;
-    CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
-    ALOAD 10
-    LDC 1
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.stackObject (I)Ljava/lang/Object;
-    CHECKCAST java/lang/String
-    GOTO L6
-   L7
-   FRAME SAME
-    ALOAD 6
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl.dispose ()I
-    ISTORE 1
-    ALOAD 5
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.willJump ()Z
-    IFEQ L8
-    ALOAD 5
-    LDC 0
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.stackObject (I)Ljava/lang/Object;
-    CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
-    ALOAD 5
-    LDC 1
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl.stackObject (I)Ljava/lang/Object;
-    CHECKCAST java/lang/String
-    GOTO L6
-   L8
-    LINENUMBER 10 L8
-   FRAME SAME
-    IINC 1 1
-    GOTO L3
-   L4
-    LINENUMBER 14 L4
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl] []
-    ALOAD 0
-    LDC "End"
-   L6
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
+    ASTORE 4
     ASTORE 3
-    ASTORE 2
+    POP
     ALOAD 0
-    ALOAD 2
     ALOAD 3
+    ALOAD 4
+    ALOAD 0
+    ALOAD 11
+    ALOAD 12
+    ALOAD 13
+    ALOAD 14
+    ALOAD 15
+    INVOKEDYNAMIC call(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      ([Ljava/lang/Object;)Ljava/lang/Object;,
+      // handle kind 0x7 : INVOKESPECIAL
+      com/llamalad7/mixintests/tests/targets/JumpTarget.mixinextras$bridge$wrapOperation$zza000$box3$12(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;[Ljava/lang/Object;)Ljava/lang/Void;,
+      ([Ljava/lang/Object;)Ljava/lang/Void;
+    ]
+    NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.<init> ()V
+    ASTORE 19
+    ALOAD 19
+    ALOAD 8
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.<init> ()V
+    ASTORE 20
+    ALOAD 20
+    NEW com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl
+    DUP
+    INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.<init> ()V
+    ASTORE 21
+    ALOAD 21
+    ALOAD 8
+    ILOAD 2
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl.init (I)V
+    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box4 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
+    ALOAD 8
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl.dispose ()I
+    ISTORE 2
+    ALOAD 19
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.willJump ()Z
+    IFEQ L6
+    ALOAD 20
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
+    CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
+    ALOAD 21
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
+    CHECKCAST java/lang/String
+    GOTO L7
+   L6
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/injector/wrapoperation/Operation com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl] []
+    ALOAD 16
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.willJump ()Z
+    IFEQ L8
+    ALOAD 17
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
+    CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
+    ALOAD 18
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
+    CHECKCAST java/lang/String
+    GOTO L7
+   L8
+   FRAME SAME
+    ALOAD 7
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.willJump ()Z
+    IFEQ L9
+    ALOAD 9
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
+    CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
+    ALOAD 10
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
+    CHECKCAST java/lang/String
+    GOTO L7
+   L9
+    LINENUMBER 14 L9
+   FRAME SAME
+    IINC 2 1
+    GOTO L4
+   L5
+    LINENUMBER 18 L5
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl] []
+    NEW java/util/ArrayList
+    DUP
+    ICONST_5
+    INVOKESPECIAL java/util/ArrayList.<init> (I)V
+    POP
+   L10
+    LINENUMBER 20 L10
+    ALOAD 0
+    FLOAD 1
+    INVOKEDYNAMIC makeConcatWithConstants(F)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "End \u0001"
+    ]
+   L7
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F I com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
+    ASTORE 4
+    ASTORE 3
+    ALOAD 0
+    ALOAD 3
+    ALOAD 4
     INVOKEDYNAMIC call()Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; [
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/LambdaMetafactory.metafactory(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
@@ -251,33 +302,43 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
       ([Ljava/lang/Object;)Ljava/lang/Void;
     ]
     INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$breakEverythingYeehaw (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)V
-   L9
-    LINENUMBER 15 L9
+   L11
+    LINENUMBER 21 L11
     RETURN
-   L10
-    LOCALVARIABLE i I L3 L4 1
-    LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L10 0
-    LOCALVARIABLE jumpInfo4 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl; L0 L10 4
-    LOCALVARIABLE jumpInfo5 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl; L0 L10 5
-    LOCALVARIABLE ref6 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl; L0 L10 6
-    LOCALVARIABLE jumpInfo10 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl; L0 L10 10
-    LOCALVARIABLE injectorAllocatedLocal9 Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef; L0 L10 9
-    LOCALVARIABLE injectorAllocatedLocal8 Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex; L0 L10 8
-    LOCALVARIABLE injectorAllocatedLocal7 Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; L0 L10 7
-    LOCALVARIABLE injectorAllocatedLocal3 Ljava/lang/Object; L0 L10 3
-    LOCALVARIABLE injectorAllocatedLocal2 Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L10 2
-    LOCALVARIABLE jumpInfo11 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoComplexImpl; L0 L10 11
-    MAXSTACK = 8
-    MAXLOCALS = 12
+   L12
+    LOCALVARIABLE i I L4 L5 2
+    LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L12 0
+    LOCALVARIABLE f F L1 L12 1
+    LOCALVARIABLE jumpInfo5 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl; L0 L12 5
+    LOCALVARIABLE jumpLocalRef6 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl; L0 L12 6
+    LOCALVARIABLE jumpInfo7 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl; L0 L12 7
+    LOCALVARIABLE localRef8 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/LocalIntRefImpl; L0 L12 8
+    LOCALVARIABLE jumpStackRef9 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl; L0 L12 9
+    LOCALVARIABLE jumpStackRef10 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl; L0 L12 10
+    LOCALVARIABLE jumpInfo16 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl; L0 L12 16
+    LOCALVARIABLE jumpStackRef17 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl; L0 L12 17
+    LOCALVARIABLE jumpStackRef18 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl; L0 L12 18
+    LOCALVARIABLE injectorAllocatedLocal15 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L12 15
+    LOCALVARIABLE injectorAllocatedLocal14 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L12 14
+    LOCALVARIABLE injectorAllocatedLocal13 Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef; L0 L12 13
+    LOCALVARIABLE injectorAllocatedLocal12 Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo; L0 L12 12
+    LOCALVARIABLE injectorAllocatedLocal11 Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; L0 L12 11
+    LOCALVARIABLE injectorAllocatedLocal4 Ljava/lang/Object; L0 L12 4
+    LOCALVARIABLE injectorAllocatedLocal3 Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L12 3
+    LOCALVARIABLE jumpInfo19 Lcom/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl; L0 L12 19
+    LOCALVARIABLE jumpStackRef20 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl; L0 L12 20
+    LOCALVARIABLE jumpStackRef21 Lcom/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl; L0 L12 21
+    MAXSTACK = 10
+    MAXLOCALS = 22
 
   // access flags 0x1
   public betterPrint(Ljava/lang/Object;)V
    L0
-    LINENUMBER 19 L0
+    LINENUMBER 25 L0
     ALOAD 1
     INVOKESTATIC com/llamalad7/mixintests/tests/targets/JumpTarget.print (Ljava/lang/Object;)V
    L1
-    LINENUMBER 20 L1
+    LINENUMBER 26 L1
     RETURN
    L2
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L2 0
@@ -286,21 +347,19 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     MAXLOCALS = 2
 
   // access flags 0x2
-  private wrapOperation$zza000$box1(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;)V
+  private wrapOperation$zza000$box1(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/jump/IntStackRef;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWrapOpTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 537 L0
+    LINENUMBER 541 L0
     ALOAD 4
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.jump ()V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L1
-    LINENUMBER 538 L1
-    ALOAD 4
+    LINENUMBER 542 L1
+    ALOAD 5
     ICONST_0
-    ICONST_0
-    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setLocal (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/IntStackRef.set (I)V (itf)
    L2
-    LINENUMBER 539 L2
+    LINENUMBER 543 L2
     RETURN
    L3
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L3 0
@@ -309,15 +368,16 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     LOCALVARIABLE original Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; L0 L3 3
     // signature Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
     // declaration: original extends com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>
-    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex; L0 L3 4
-    MAXSTACK = 3
-    MAXLOCALS = 5
+    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo; L0 L3 4
+    LOCALVARIABLE i Lcom/llamalad7/mixinextras/sugar/ref/jump/IntStackRef; L0 L3 5
+    MAXSTACK = 2
+    MAXLOCALS = 6
 
   // access flags 0x2
   private wrapOperation$zza000$breakEverythingYeehaw(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWrapOpTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 554 L0
+    LINENUMBER 558 L0
     ALOAD 3
     ICONST_2
     ANEWARRAY java/lang/Object
@@ -332,7 +392,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     INVOKEINTERFACE com/llamalad7/mixinextras/injector/wrapoperation/Operation.call ([Ljava/lang/Object;)Ljava/lang/Object; (itf)
     POP
    L1
-    LINENUMBER 555 L1
+    LINENUMBER 559 L1
     RETURN
    L2
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L2 0
@@ -345,10 +405,10 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     MAXLOCALS = 4
 
   // access flags 0x2
-  private wrapOperation$zza000$box2(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+  private wrapOperation$zza000$box2(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWrapOpTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 576 L0
+    LINENUMBER 582 L0
     ALOAD 3
     ICONST_2
     ANEWARRAY java/lang/Object
@@ -370,42 +430,40 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     INVOKEINTERFACE com/llamalad7/mixinextras/injector/wrapoperation/Operation.call ([Ljava/lang/Object;)Ljava/lang/Object; (itf)
     POP
    L1
-    LINENUMBER 578 L1
+    LINENUMBER 584 L1
     ALOAD 5
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get ()I (itf)
     ICONST_5
     IF_ICMPLT L2
    L3
-    LINENUMBER 579 L3
+    LINENUMBER 585 L3
     ALOAD 4
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.jump ()V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L4
-    LINENUMBER 580 L4
-    ALOAD 4
-    ICONST_0
+    LINENUMBER 586 L4
+    ALOAD 6
     ALOAD 0
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setStack (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L5
-    LINENUMBER 581 L5
-    ALOAD 4
-    ICONST_1
+    LINENUMBER 587 L5
+    ALOAD 7
     LDC "End but better"
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setStack (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
     GOTO L6
    L2
-    LINENUMBER 582 L2
+    LINENUMBER 588 L2
    FRAME SAME
     ALOAD 5
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get ()I (itf)
     ICONST_1
     IF_ICMPNE L6
    L7
-    LINENUMBER 583 L7
+    LINENUMBER 589 L7
     ALOAD 5
     ICONST_2
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/LocalIntRef.set (I)V (itf)
    L6
-    LINENUMBER 585 L6
+    LINENUMBER 591 L6
    FRAME SAME
     RETURN
    L8
@@ -415,16 +473,22 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     LOCALVARIABLE original Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; L0 L8 3
     // signature Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
     // declaration: original extends com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>
-    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex; L0 L8 4
+    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo; L0 L8 4
     LOCALVARIABLE i Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef; L0 L8 5
+    LOCALVARIABLE stack1 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L8 6
+    // signature Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef<Lcom/llamalad7/mixintests/tests/targets/JumpTarget;>;
+    // declaration: stack1 extends com.llamalad7.mixinextras.sugar.ref.jump.StackRef<com.llamalad7.mixintests.tests.targets.JumpTarget>
+    LOCALVARIABLE stack2 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L8 7
+    // signature Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef<Ljava/lang/String;>;
+    // declaration: stack2 extends com.llamalad7.mixinextras.sugar.ref.jump.StackRef<java.lang.String>
     MAXSTACK = 6
-    MAXLOCALS = 6
+    MAXLOCALS = 8
 
   // access flags 0x2
-  private wrapOperation$zza000$box3(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+  private wrapOperation$zza000$box3(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWrapOpTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 606 L0
+    LINENUMBER 614 L0
     ALOAD 3
     ICONST_2
     ANEWARRAY java/lang/Object
@@ -446,29 +510,27 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     INVOKEINTERFACE com/llamalad7/mixinextras/injector/wrapoperation/Operation.call ([Ljava/lang/Object;)Ljava/lang/Object; (itf)
     POP
    L1
-    LINENUMBER 608 L1
+    LINENUMBER 616 L1
     ALOAD 5
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get ()I (itf)
     BIPUSH 8
     IF_ICMPLT L2
    L3
-    LINENUMBER 609 L3
+    LINENUMBER 617 L3
     ALOAD 4
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.jump ()V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L4
-    LINENUMBER 610 L4
-    ALOAD 4
-    ICONST_0
+    LINENUMBER 618 L4
+    ALOAD 6
     ALOAD 0
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setStack (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L5
-    LINENUMBER 611 L5
-    ALOAD 4
-    ICONST_1
+    LINENUMBER 619 L5
+    ALOAD 7
     LDC "End but better"
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setStack (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L2
-    LINENUMBER 613 L2
+    LINENUMBER 621 L2
    FRAME SAME
     RETURN
    L6
@@ -478,16 +540,22 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     LOCALVARIABLE original Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; L0 L6 3
     // signature Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
     // declaration: original extends com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>
-    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex; L0 L6 4
+    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo; L0 L6 4
     LOCALVARIABLE i Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef; L0 L6 5
+    LOCALVARIABLE stack1 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L6 6
+    // signature Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef<Lcom/llamalad7/mixintests/tests/targets/JumpTarget;>;
+    // declaration: stack1 extends com.llamalad7.mixinextras.sugar.ref.jump.StackRef<com.llamalad7.mixintests.tests.targets.JumpTarget>
+    LOCALVARIABLE stack2 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L6 7
+    // signature Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef<Ljava/lang/String;>;
+    // declaration: stack2 extends com.llamalad7.mixinextras.sugar.ref.jump.StackRef<java.lang.String>
     MAXSTACK = 6
-    MAXLOCALS = 6
+    MAXLOCALS = 8
 
   // access flags 0x2
-  private wrapOperation$zza000$box4(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+  private wrapOperation$zza000$box4(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWrapOpTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 634 L0
+    LINENUMBER 644 L0
     ALOAD 3
     ICONST_2
     ANEWARRAY java/lang/Object
@@ -509,29 +577,27 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     INVOKEINTERFACE com/llamalad7/mixinextras/injector/wrapoperation/Operation.call ([Ljava/lang/Object;)Ljava/lang/Object; (itf)
     POP
    L1
-    LINENUMBER 636 L1
+    LINENUMBER 646 L1
     ALOAD 5
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get ()I (itf)
     ICONST_3
     IF_ICMPLT L2
    L3
-    LINENUMBER 637 L3
+    LINENUMBER 647 L3
     ALOAD 4
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.jump ()V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L4
-    LINENUMBER 638 L4
-    ALOAD 4
-    ICONST_0
+    LINENUMBER 648 L4
+    ALOAD 6
     ALOAD 0
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setStack (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L5
-    LINENUMBER 639 L5
-    ALOAD 4
-    ICONST_1
+    LINENUMBER 649 L5
+    ALOAD 7
     LDC "End but better"
-    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfoComplex.setStack (ILjava/lang/Object;)V (itf)
+    INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L2
-    LINENUMBER 641 L2
+    LINENUMBER 651 L2
    FRAME SAME
     RETURN
    L6
@@ -541,10 +607,16 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     LOCALVARIABLE original Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation; L0 L6 3
     // signature Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
     // declaration: original extends com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>
-    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex; L0 L6 4
+    LOCALVARIABLE jump Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo; L0 L6 4
     LOCALVARIABLE i Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef; L0 L6 5
+    LOCALVARIABLE stack1 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L6 6
+    // signature Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef<Lcom/llamalad7/mixintests/tests/targets/JumpTarget;>;
+    // declaration: stack1 extends com.llamalad7.mixinextras.sugar.ref.jump.StackRef<com.llamalad7.mixintests.tests.targets.JumpTarget>
+    LOCALVARIABLE stack2 Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef; L0 L6 7
+    // signature Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef<Ljava/lang/String;>;
+    // declaration: stack2 extends com.llamalad7.mixinextras.sugar.ref.jump.StackRef<java.lang.String>
     MAXSTACK = 6
-    MAXLOCALS = 6
+    MAXLOCALS = 8
 
   // access flags 0x100A
   private static synthetic mixinextras$bridge$betterPrint$8([Ljava/lang/Object;)Ljava/lang/Void;
@@ -622,13 +694,13 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     MAXLOCALS = 1
 
   // access flags 0x1002
-  private synthetic mixinextras$bridge$wrapOperation$zza000$box2$11(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;[Ljava/lang/Object;)Ljava/lang/Void;
-    ALOAD 4
+  private synthetic mixinextras$bridge$wrapOperation$zza000$box2$11(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;[Ljava/lang/Object;)Ljava/lang/Void;
+    ALOAD 6
     BIPUSH 2
     LDC "[com.llamalad7.mixintests.tests.targets.JumpTarget, java.lang.Object]"
     INVOKESTATIC com/llamalad7/mixinextras/injector/wrapoperation/WrapOperationRuntime.checkArgumentCount ([Ljava/lang/Object;ILjava/lang/String;)V
     ALOAD 0
-    ALOAD 4
+    ALOAD 6
     DUP
     BIPUSH 0
     AALOAD
@@ -643,21 +715,23 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     ALOAD 1
     ALOAD 2
     ALOAD 3
-    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box2 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+    ALOAD 4
+    ALOAD 5
+    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box2 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
     ACONST_NULL
     CHECKCAST java/lang/Void
     ARETURN
-    MAXSTACK = 6
-    MAXLOCALS = 5
+    MAXSTACK = 8
+    MAXLOCALS = 7
 
   // access flags 0x1002
-  private synthetic mixinextras$bridge$wrapOperation$zza000$box3$12(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;[Ljava/lang/Object;)Ljava/lang/Void;
-    ALOAD 4
+  private synthetic mixinextras$bridge$wrapOperation$zza000$box3$12(Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;[Ljava/lang/Object;)Ljava/lang/Void;
+    ALOAD 6
     BIPUSH 2
     LDC "[com.llamalad7.mixintests.tests.targets.JumpTarget, java.lang.Object]"
     INVOKESTATIC com/llamalad7/mixinextras/injector/wrapoperation/WrapOperationRuntime.checkArgumentCount ([Ljava/lang/Object;ILjava/lang/String;)V
     ALOAD 0
-    ALOAD 4
+    ALOAD 6
     DUP
     BIPUSH 0
     AALOAD
@@ -672,10 +746,12 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWrapOpTest$TestMixin.
     ALOAD 1
     ALOAD 2
     ALOAD 3
-    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box3 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfoComplex;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+    ALOAD 4
+    ALOAD 5
+    INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.wrapOperation$zza000$box3 (Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
     ACONST_NULL
     CHECKCAST java/lang/Void
     ARETURN
-    MAXSTACK = 6
-    MAXLOCALS = 5
+    MAXSTACK = 8
+    MAXLOCALS = 7
 }

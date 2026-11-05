@@ -1,0 +1,1 @@
+java.lang.NullPointerException: Cannot invoke "com.llamalad7.mixintests.tests.targets.JumpTarget.betterPrint(Object)"

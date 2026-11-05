@@ -25,7 +25,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/BreakLoopTest$TestMixin.j
   // access flags 0x1
   public <init>()V
    L0
-    LINENUMBER 5 L0
+    LINENUMBER 7 L0
     ALOAD 0
     INVOKESPECIAL com/llamalad7/mixintests/harness/tests/TestBox.<init> ()V
     RETURN
@@ -37,23 +37,33 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/BreakLoopTest$TestMixin.j
   // access flags 0x4
   protected box()V
    L0
-    LINENUMBER 8 L0
-    ALOAD 0
-    LDC "Initial 10"
-    INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
+    LINENUMBER 10 L0
+    LDC 10.0F
+    FSTORE 1
    L1
-    LINENUMBER 10 L1
-    ICONST_0
-    ISTORE 1
-   L2
-   FRAME APPEND [I]
-    ILOAD 1
-    BIPUSH 10
-    IF_ICMPGE L3
-   L4
-    LINENUMBER 11 L4
+    LINENUMBER 12 L1
     ALOAD 0
-    ILOAD 1
+    FLOAD 1
+    INVOKEDYNAMIC makeConcatWithConstants(F)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "Initial \u0001"
+    ]
+    INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
+   L2
+    LINENUMBER 14 L2
+    ICONST_0
+    ISTORE 2
+   L3
+   FRAME APPEND [F I]
+    ILOAD 2
+    BIPUSH 10
+    IF_ICMPGE L4
+   L5
+    LINENUMBER 15 L5
+    ALOAD 0
+    ILOAD 2
     INVOKEDYNAMIC makeConcatWithConstants(I)Ljava/lang/String; [
       // handle kind 0x6 : INVOKESTATIC
       java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
@@ -65,46 +75,60 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/BreakLoopTest$TestMixin.j
     NEW com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl
     DUP
     INVOKESPECIAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.<init> ()V
-    ASTORE 2
-    ALOAD 2
-    ILOAD 1
+    ASTORE 3
+    ALOAD 3
+    ILOAD 2
     INVOKESPECIAL com/llamalad7/mixintests/tests/targets/JumpTarget.handler$zza000$breakLoop (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;I)V
-    ALOAD 2
+    ALOAD 3
     INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.willJump ()Z
-    IFEQ L5
+    IFEQ L6
     POP
     POP
-    GOTO L3
-   L5
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget I com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
-    INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
+    GOTO L4
    L6
-    LINENUMBER 10 L6
-    IINC 1 1
-    GOTO L2
-   L3
-    LINENUMBER 14 L3
-   FRAME CHOP 1
-    ALOAD 0
-    LDC "End"
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F I com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
     INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
    L7
-    LINENUMBER 15 L7
-    RETURN
+    LINENUMBER 14 L7
+    IINC 2 1
+    GOTO L3
+   L4
+    LINENUMBER 18 L4
+   FRAME CHOP 1
+    NEW java/util/ArrayList
+    DUP
+    ICONST_5
+    INVOKESPECIAL java/util/ArrayList.<init> (I)V
+    POP
    L8
-    LOCALVARIABLE i I L2 L3 1
-    LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L8 0
+    LINENUMBER 20 L8
+    ALOAD 0
+    FLOAD 1
+    INVOKEDYNAMIC makeConcatWithConstants(F)Ljava/lang/String; [
+      // handle kind 0x6 : INVOKESTATIC
+      java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+      // arguments:
+      "End \u0001"
+    ]
+    INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
+   L9
+    LINENUMBER 21 L9
+    RETURN
+   L10
+    LOCALVARIABLE i I L3 L4 2
+    LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L10 0
+    LOCALVARIABLE f F L1 L10 1
     MAXSTACK = 6
-    MAXLOCALS = 3
+    MAXLOCALS = 4
 
   // access flags 0x1
   public betterPrint(Ljava/lang/Object;)V
    L0
-    LINENUMBER 19 L0
+    LINENUMBER 25 L0
     ALOAD 1
     INVOKESTATIC com/llamalad7/mixintests/tests/targets/JumpTarget.print (Ljava/lang/Object;)V
    L1
-    LINENUMBER 20 L1
+    LINENUMBER 26 L1
     RETURN
    L2
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L2 0
