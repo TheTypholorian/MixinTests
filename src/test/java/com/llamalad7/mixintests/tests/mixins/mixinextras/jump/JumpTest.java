@@ -56,8 +56,8 @@ public class JumpTest {
                         ordinal = 2
                 )) JumpInfo jump,
                 @Local LocalIntRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             if (i.get() >= 5) {
                 jump.jump();
@@ -84,8 +84,8 @@ public class JumpTest {
                         ordinal = 2
                 )) JumpInfo jump,
                 @Local LocalIntRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             if (i.get() >= 8) {
                 jump.jump();
@@ -110,8 +110,8 @@ public class JumpTest {
                         ordinal = 2
                 )) JumpInfo jump,
                 @Local LocalIntRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             if (i.get() >= 3) {
                 jump.jump();

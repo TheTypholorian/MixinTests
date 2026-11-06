@@ -35,8 +35,8 @@ public class JumpWithRedirectTest {
                         ordinal = 1
                 )) JumpInfo jump,
                 @Local(jump = 0) IntStackRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             jump.jump();
             i.set(0);

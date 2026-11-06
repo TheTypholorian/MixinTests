@@ -76,8 +76,8 @@ public class JumpWrapOpTest {
                         ordinal = 2
                 )) JumpInfo jump,
                 @Local LocalIntRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             original.call(instance, o + " (yay!)");
 
@@ -108,8 +108,8 @@ public class JumpWrapOpTest {
                         ordinal = 2
                 )) JumpInfo jump,
                 @Local LocalIntRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             original.call(instance, o + " (wow!)");
 
@@ -138,8 +138,8 @@ public class JumpWrapOpTest {
                         ordinal = 2
                 )) JumpInfo jump,
                 @Local LocalIntRef i,
-                @JumpStack(index = 0, jump = 0) StackRef<JumpTarget> stack1,
-                @JumpStack(index = 1, jump = 0) StackRef<String> stack2
+                @JumpStack(index = 0) StackRef<JumpTarget> stack1,
+                @JumpStack(index = 1) StackRef<String> stack2
         ) {
             original.call(instance, o + " (fantastic!)");
 
