@@ -1,12 +1,7 @@
 package com.llamalad7.mixintests.tests.mixins.mixinextras.jump;
 
 import com.llamalad7.mixinextras.sugar.Jump;
-import com.llamalad7.mixinextras.sugar.JumpStack;
-import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.jump.JumpInfo;
-import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
-import com.llamalad7.mixinextras.sugar.ref.jump.IntStackRef;
-import com.llamalad7.mixinextras.sugar.ref.jump.StackRef;
 import com.llamalad7.mixintests.ap.annotations.MixinTest;
 import com.llamalad7.mixintests.ap.annotations.TestOption;
 import com.llamalad7.mixintests.tests.targets.JumpTarget;

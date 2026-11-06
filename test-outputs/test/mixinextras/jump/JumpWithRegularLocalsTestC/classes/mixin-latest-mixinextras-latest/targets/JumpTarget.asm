@@ -157,16 +157,16 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithRegularLocalsTest
   private handler$zza000$box1(Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/LocalFloatRef;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWithRegularLocalsTestC$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 537 L0
+    LINENUMBER 536 L0
     ALOAD 3
     LDC 15.0F
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/LocalFloatRef.set (F)V (itf)
    L1
-    LINENUMBER 538 L1
+    LINENUMBER 537 L1
     ALOAD 2
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L2
-    LINENUMBER 539 L2
+    LINENUMBER 538 L2
     RETURN
    L3
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L3 0

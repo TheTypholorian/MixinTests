@@ -180,26 +180,26 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithRedirectTest$Test
   private handler$zza000$jump(Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;Lcom/llamalad7/mixinextras/sugar/ref/jump/IntStackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;Lcom/llamalad7/mixinextras/sugar/ref/jump/StackRef;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWithRedirectTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 542 L0
+    LINENUMBER 541 L0
     ALOAD 2
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L1
-    LINENUMBER 543 L1
+    LINENUMBER 542 L1
     ALOAD 3
     ICONST_0
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/IntStackRef.set (I)V (itf)
    L2
-    LINENUMBER 544 L2
+    LINENUMBER 543 L2
     ALOAD 4
     ALOAD 0
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L3
-    LINENUMBER 545 L3
+    LINENUMBER 544 L3
     ALOAD 5
     LDC "Jumped yay!"
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/ref/jump/StackRef.set (Ljava/lang/Object;)V (itf)
    L4
-    LINENUMBER 546 L4
+    LINENUMBER 545 L4
     RETURN
    L5
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L5 0
@@ -219,7 +219,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithRedirectTest$Test
   private redirect$zza000$redirect(Lcom/llamalad7/mixintests/tests/targets/JumpTarget;Ljava/lang/Object;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpWithRedirectTest$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 557 L0
+    LINENUMBER 556 L0
     ALOAD 1
     NEW java/lang/StringBuilder
     DUP
@@ -231,7 +231,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithRedirectTest$Test
     INVOKEVIRTUAL java/lang/StringBuilder.toString ()Ljava/lang/String;
     INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
    L1
-    LINENUMBER 558 L1
+    LINENUMBER 557 L1
     RETURN
    L2
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L2 0

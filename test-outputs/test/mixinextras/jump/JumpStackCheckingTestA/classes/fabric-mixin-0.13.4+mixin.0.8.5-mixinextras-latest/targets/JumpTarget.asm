@@ -140,11 +140,11 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpStackCheckingTestA$Te
   private handler$zza000$box(Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lcom/llamalad7/mixinextras/sugar/jump/JumpInfo;)V
   @Lorg/spongepowered/asm/mixin/transformer/meta/MixinMerged;(mixin="com.llamalad7.mixintests.tests.mixins.mixinextras.jump.JumpStackCheckingTestA$TestMixin", priority=1000, sessionId="bb20b45f-d4d9-5138-3d93-cb799b3970be")
    L0
-    LINENUMBER 534 L0
+    LINENUMBER 529 L0
     ALOAD 2
     INVOKEINTERFACE com/llamalad7/mixinextras/sugar/jump/JumpInfo.jump ()V (itf)
    L1
-    LINENUMBER 536 L1
+    LINENUMBER 531 L1
     RETURN
    L2
     LOCALVARIABLE this Lcom/llamalad7/mixintests/tests/targets/JumpTarget; L0 L2 0
