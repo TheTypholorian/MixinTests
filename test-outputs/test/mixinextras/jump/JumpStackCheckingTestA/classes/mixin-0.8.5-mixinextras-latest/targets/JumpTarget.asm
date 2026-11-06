@@ -52,6 +52,10 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpStackCheckingTestA$Te
     ALOAD 4
     INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl.willJump ()Z
     IFEQ L1
+    FCONST_0
+    FSTORE 1
+    ICONST_0
+    ISTORE 2
     ACONST_NULL
     ACONST_NULL
     GOTO L2
@@ -114,7 +118,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpStackCheckingTestA$Te
       "End \u0001"
     ]
    L2
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget T T T com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
+   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F I T com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
     INVOKEVIRTUAL com/llamalad7/mixintests/tests/targets/JumpTarget.betterPrint (Ljava/lang/Object;)V
    L10
     LINENUMBER 21 L10

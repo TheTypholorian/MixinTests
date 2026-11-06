@@ -1,23 +1,23 @@
 java.lang.VerifyError: Bad type on operand stack
 Exception Details:
   Location:
-    com/llamalad7/mixintests/tests/targets/JumpTarget.box()V @69: invokespecial
+    com/llamalad7/mixintests/tests/targets/JumpTarget.box()V @73: invokespecial
   Reason:
     Type top (current frame, stack[1]) is not assignable to reference type
   Current Frame:
-    bci: @69
+    bci: @73
     flags: { }
-    locals: { 'com/llamalad7/mixintests/tests/targets/JumpTarget', top, top, 'com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl' }
+    locals: { 'com/llamalad7/mixintests/tests/targets/JumpTarget', float, integer, 'com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl' }
     stack: { top, top, integer }
   Bytecode:
     0000000: 2a01 bb00 1459 b700 154e 2db7 0019 2db6
-    0000010: 001d 9900 0901 0103 a700 2d12 1e44 2a23
-    0000020: ba00 2a00 00b6 002e 033d 1c10 0aa2 0013
-    0000030: 2a1c ba00 3300 00b6 002e 8402 01a7 ffed
-    0000040: bb00 3559 08b7 0038 572a 23ba 003b 0000
-    0000050: b600 2eb1
+    0000010: 001d 9900 0d0b 4403 3d01 0103 a700 2d12
+    0000020: 1e44 2a23 ba00 2a00 00b6 002e 033d 1c10
+    0000030: 0aa2 0013 2a1c ba00 3300 00b6 002e 8402
+    0000040: 01a7 ffed bb00 3559 08b7 0038 572a 23ba
+    0000050: 003b 0000 b600 2eb1
   Stackmap Table:
-    append_frame(@27,Top,Top,Object[#20])
-    full_frame(@42,{Object[#2],Float,Integer,Object[#20]},{})
-    same_frame(@64)
-    full_frame(@69,{Object[#2],Top,Top,Object[#20]},{Top,Top,Integer})
+    append_frame(@31,Top,Top,Object[#20])
+    full_frame(@46,{Object[#2],Float,Integer,Object[#20]},{})
+    same_frame(@68)
+    full_frame(@73,{Object[#2],Float,Integer,Object[#20]},{Top,Top,Integer})

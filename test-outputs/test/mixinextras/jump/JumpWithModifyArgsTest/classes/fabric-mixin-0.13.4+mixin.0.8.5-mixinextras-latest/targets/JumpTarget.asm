@@ -78,15 +78,15 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithModifyArgsTest$Te
     IFEQ L2
     POP
     POP
+    ALOAD 4
+    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl.dispose ()I
+    ISTORE 2
     ALOAD 5
     INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
     CHECKCAST com/llamalad7/mixintests/tests/targets/JumpTarget
     ALOAD 6
     INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl.dispose ()Ljava/lang/Object;
     CHECKCAST java/lang/String
-    ALOAD 4
-    INVOKEVIRTUAL com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl.dispose ()I
-    ISTORE 2
     GOTO L3
    L2
    FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F T com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/IntStackRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/StackRefImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]

@@ -78,6 +78,8 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithRegularLocalsTest
     IFEQ L2
     POP
     POP
+    ICONST_0
+    ISTORE 2
     GOTO L3
    L2
    FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F T T com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalFloatRefImpl] [com/llamalad7/mixintests/tests/targets/JumpTarget java/lang/String]
@@ -116,7 +118,7 @@ com/llamalad7/mixintests/tests/mixins/mixinextras/jump/JumpWithRegularLocalsTest
     POP
    L3
     LINENUMBER 20 L3
-   FRAME FULL [com/llamalad7/mixintests/tests/targets/JumpTarget F T T com/llamalad7/mixinextras/sugar/impl/jump/JumpInfoImpl com/llamalad7/mixinextras/sugar/impl/ref/generated/LocalFloatRefImpl] []
+   FRAME SAME
     ALOAD 0
     FLOAD 1
     INVOKEDYNAMIC makeConcatWithConstants(F)Ljava/lang/String; [
